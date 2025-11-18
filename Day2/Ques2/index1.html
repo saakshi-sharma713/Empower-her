@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+
+    .container {
+      width: 90%;
+      margin: auto;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+    }
+
+    .day {
+      font-weight: bold;
+      background: #ffe0e8;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .time {
+      font-weight: bold;
+      background: #e3f3ff;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .cell {
+      height: 40px;
+      border-radius: 20px;
+    }
+
+    .pink { background: #f7c5d8; }
+    .yellow { background: #f9e9a9; }
+
+    .note{
+          background: #e3f3ff;
+          grid-column: 1/6;
+          display: flex;
+          justify-content: flex-start;
+          margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+     <div class="container">
+    <h2>Weekly Schedule</h2>
+
+    <div class="schedule-grid">
+
+      <!-- Empty top-left cell -->
+      <div></div>
+
+      <!-- Days -->
+      <div class="day">Monday</div>
+      <div class="day">Tuesday</div>
+      <div class="day">Wednesday</div>
+      <div class="day">Thursday</div>
+      <div class="day">Friday</div>
+
+      <!-- 08:00 Row -->
+      <div class="time">08:00</div>
+      <div class="cell pink"></div>
+      <div class="cell yellow"></div>
+      <div class="cell pink"></div>
+      <div class="cell yellow"></div>
+      <div class="cell pink"></div>
+
+      <!-- 09:00 Row -->
+      <div class="time">09:00</div>
+      <div class="cell pink"></div>
+      <div class="cell yellow"></div>
+      <div class="cell pink"></div>
+      <div class="cell yellow"></div>
+      <div class="cell pink"></div>
+
+      <!-- 10:00 Row -->
+      <div class="time">10:00</div>
+      <div class="cell pink"></div>
+      <div class="cell yellow"></div>
+      <div class="cell pink"></div>
+      <div class="cell yellow"></div>
+      <div class="cell pink"></div>
+
+      <!-- 11:00 Row -->
+      <div class="time">11:00</div>
+      <div class="cell pink"></div>
+      <div class="cell yellow"></div>
+      <div class="cell pink"></div>
+      <div class="cell yellow"></div>
+      <div class="cell pink"></div>
+
+      <!-- Add more rows if needed -->
+       <div class="time">12:00</div>
+      <div class="cell pink"></div>
+      <div class="cell yellow"></div>
+      <div class="cell pink"></div>
+      <div class="cell yellow"></div>
+      <div class="cell pink"></div>
+
+      <div class="time">13:00</div>
+      <div class="cell pink"></div>
+      <div class="cell yellow"></div>
+      <div class="cell pink"></div>
+      <div class="cell yellow"></div>
+      <div class="cell pink"></div>
+
+      <div class="time">14:00</div>
+      <div class="cell pink"></div>
+      <div class="cell yellow"></div>
+      <div class="cell pink"></div>
+      <div class="cell yellow"></div>
+      <div class="cell pink"></div>
+
+      <div class="time">15:00</div>
+      <div class="cell pink"></div>
+      <div class="cell yellow"></div>
+      <div class="cell pink"></div>
+      <div class="cell yellow"></div>
+      <div class="cell pink"></div>
+
+
+    <div class="time">16:00</div>
+      <div class="cell pink"></div>
+      <div class="cell yellow"></div>
+      <div class="cell pink"></div>
+      <div class="cell yellow"></div>
+      <div class="cell pink"></div>
+    </div>
+
+    <div class="note time">
+Note:
+    </div>
+
+  </div>
+
+</body>
+</html>
