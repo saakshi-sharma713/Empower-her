@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>Apple</li>
+        <li>Mango</li>
+        <li>Orange</li>
+    </ul>
+    <button onclick="Add()">Add Item</button>
+</body>
+<script>
+ function Add(){
+    const li=document.createElement("li");
+      const ul = document.querySelector("ul");
+      li.textContent="New Item";
+       const seq = ul.children.length + 1;
+        if (seq % 2 === 1) {
+        // odd
+        li.style.fontWeight = "bold";
+        li.style.color = "blue";
+      } else {
+        // even
+        li.style.fontStyle = "italic";
+        li.style.color = "red";
+      }
+
+      ul.appendChild(li);
+ }
+</script>
+</html>

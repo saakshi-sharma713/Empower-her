@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <style>
+    #box {
+      width: 300px;
+      padding: 20px;
+      background-color: lightgray;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+   <h2>DOM Manipulation Assignment</h2>
+
+  
+  <input id="colorInput" type="text" placeholder="Enter a color name (e.g. red, blue)" />
+
+  
+  <input id="textInput" type="text" placeholder="Enter text to update the div" />
+
+  <br><br>
+
+  <button id="changeBgBtn">Change Background</button>
+  <button id="updateTextBtn">Update Text</button>
+
+  
+  <div id="box">This is the initial content of the div.</div>
+
+  <script>
+    const colorInput = document.getElementById("colorInput");
+    const textInput = document.getElementById("textInput");
+    const box = document.getElementById("box");
+
+    const changeBgBtn = document.getElementById("changeBgBtn");
+    const updateTextBtn = document.getElementById("updateTextBtn");
+
+
+    changeBgBtn.addEventListener("click", function () {
+      const color = colorInput.value.trim();
+
+    
+      box.style.backgroundColor = color;
+
+      
+      if (box.style.backgroundColor === "") {
+        alert("Invalid color name!");
+      }
+    });
+
+
+    updateTextBtn.addEventListener("click", function () {
+      const text = textInput.value.trim();
+
+      if (text === "") {
+        alert("Please enter some text!");
+      } else {
+        box.textContent = text;
+      }
+    });
+  </script>
+
+</body>
+</html>
