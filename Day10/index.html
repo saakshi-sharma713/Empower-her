@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         button{
+      height:40px;
+         width:150px;  
+           background-color:royalblue;
+           border:none;
+           border-radius: 8px;
+           color:white
+    }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to webpage</h1>
+
+    <button id="admin"type="button" >Go to Admin Page</button>
+
+    <script>
+     const admin = document.getElementById("admin");  
+    admin.addEventListener("click",()=>{
+      
+            console.log("Button clicked!");
+            window.location.href = "Admin.html";
+     })
+    
+    </script>
+</body>
+</html>
