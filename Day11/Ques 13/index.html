@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .abc{
+            width:800px;
+            height:50px;
+            padding:4px 6px;
+            background-color:antiquewhite;
+            border:none;
+            border-radius:8px;
+            margin:5px;
+        }
+       
+        .main{
+           display:flex;
+            flex-direction:column;
+            width:40%; 
+            
+        }
+        .btn{
+              display:flex;
+            flex-direction:column;
+            width:100%;
+            gap:5px;
+        }
+        button{
+            padding: 6px 6px;
+            background-color: royalblue;
+            border:none;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+ <textarea rows="10" cols="30" placeholder="enter a note"></textarea>
+<div class="btn">
+ <button onclick="addNote()">Load Notes</button>
+    <button onclick="clearAll()">Clear Notes</button>
+</div>
+    </div>
+   
+    <div class="container"></div>
+</body>
+<script>
+// Function to add Notes
+let notes = JSON.parse(localStorage.getItem("notes")) || [];
+function addNote(){
+    const text = document.querySelector("textarea").value;
+    if(text != ""){
+  notes.push(text);
+   save();
+    }
+    console.log(text);
+  
+   
+    render();
+}
+function render(){
+const container = document.querySelector(".container");
+container.innerHTML=" ";
+notes.forEach((note)=>{
+    const div=document.createElement("div");
+    div.textContent=note;
+    div.className="abc";
+    container.append(div);
+})
+}
+function save(){
+    localStorage.setItem("notes",JSON.stringify(notes));
+}
+function clearAll(){
+      notes = [];  
+    localStorage.clear();
+    render();
+       
+}
+render();
+</script>
+</html>

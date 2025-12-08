@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="addText()">Add Paragraph</button>
+     <button onclick="removeText()">Remove Paragraph</button>
+      <div class="container"></div>
+</body>
+<script>
+   const parentt = document.querySelector(".container");
+   function addText(){
+    const para = document.createElement("p");
+    para.textContent="This is a new paragraph."
+    parentt.append(para);
+   }
+
+   function removeText(){
+    const lastline = parentt.lastChild;
+    if(lastline)
+    parentt.removeChild(lastline);
+   }
+</script>
+</html>
