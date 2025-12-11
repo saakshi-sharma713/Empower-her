@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signup</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="nav"></div>
+
+  <h2 style="text-align:center; margin-top:20px;">Create an Account</h2>
+
+  <div class="form-container">
+    <form id="signupForm">
+
+      <label>Name</label>
+      <input type="text" id="name" required />
+
+      <label>Email</label>
+      <input type="email" id="email" required />
+
+      <label>Password</label>
+      <input type="password" id="password" required />
+
+      <button type="submit" class="sign-up">Sign Up</button>
+
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <div class="foot"></div>
+
+  <script type="module" src="signup.js"></script>
+</body>
+<script>
+  const btn =  document.querySelector(".sign-up");
+btn.addEventListener("click",(e)=>{
+   const Name = document.querySelector("#name").value;
+const Email = document.querySelector("#email").value;
+const Password = document.querySelector("#password").value;
+
+localStorage.setItem("SignUp",JSON.stringify({Name,Email,Password}));
+})
+
+</script>
+</html>

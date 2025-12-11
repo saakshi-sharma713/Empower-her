@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css"/>
+    <style>
+      .main{
+        display:flex;
+        width:100%;
+        height:100%;
+        background-color: blue;
+        justify-content: space-evenly;
+      }
+      .container{
+        width:70%;
+        height:100%;
+        background-color: aquamarine;
+        display:grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-template-rows: auto;
+        gap: 10px;   
+         padding:20px;
+        
+      }
+      .sidebar{
+        width:40%;
+        
+      }
+      .abc{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: blueviolet;
+        border:1px solid black;
+        padding :15px;
+      }
+      
+       .abc img {
+  width: 100%;
+  height: 300px;
+object-fit: contain;
+}
+      
+    </style>
+</head>
+
+<body>
+    <div class="main">
+
+<div id="sidebar">
+  <h2>Add New Book</h2>
+
+  <form id="bookForm">
+    <label>Title</label>
+    <input type="text" id="title" required />
+
+    <label>Author</label>
+    <input type="text" id="author" required />
+
+    <label>Price</label>
+    <input type="number" id="price" required />
+
+    <label>Image URL</label>
+    <input type="text" id="imageUrl" required />
+
+    <button type="button" onclick="addBook()">Add Book</button>
+    <button type="button" id="closeSidebarBtn" class="closeBtn">Close</button>
+  </form>
+</div>
+<div class="container"></div>
+</div>
+</body>
+<script>
+  let books=[];
+  fetch("https://book-management-8bc09-default-rtdb.asia-southeast1.firebasedatabase.app/Book-Management.json",{
+    method:"GET"
+  }).then((res)=> res.json())
+  .then((data)=>{
+   // books=data;
+    console.log(data);
+    for(let i in data){
+        books.push(data[i]);
+    }
+    renderBooks(books)
+  });
+  
+        
+    function addBook(){
+      
+       const title = document.querySelector("#title").value;
+        const author = document.querySelector("#author").value;
+        const price=document.querySelector("#price").value;
+        const imageUrl=document.querySelector("#imageUrl").value;
+        fetch("https://book-management-8bc09-default-rtdb.asia-southeast1.firebasedatabase.app/Book-Management.json",
+        {method:"POST", body:JSON.stringify(   {
+    title: title,
+    author:author,
+    price:price,
+    imageUrl:imageUrl
+  })}).then(res => res.json())
+     .then(data => books.push(data));
+       renderBooks(books);
+     
+    }
+      const container = document.querySelector(".container");
+      
+     function renderBooks(){ 
+      container.innerHTML=" ";
+    books.forEach((val)=>{
+   const image =  document.createElement("img");
+   const card = document.createElement("div");
+   card.className="abc";
+  card.style.border = "1px solid #ddd";
+  card.style.borderRadius = "8px";
+  image.src=val.imageUrl;
+  const h3 = document.createElement("h3");
+  h3.textContent = val.title;
+
+  const p = document.createElement("p");
+  p.textContent = val.author;
+
+  card.append(image,h3, p);
+  
+container.appendChild(card);
+    
+    })
+  } 
+
+
+
+
+    
+</script>
+</html>

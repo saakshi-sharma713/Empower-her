@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="nav"></div>
+
+  <h2 style="text-align:center; margin-top:20px;">Login to Continue</h2>
+
+  <div class="form-container">
+    <form id="loginForm">
+
+      <label>Email</label>
+      <input type="email" id="Email" required />
+
+      <label>Password</label>
+      <input type="password" id="Password" required />
+
+      <button type="submit" class="login">Login</button>
+
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <div class="foot"></div>
+
+  <script type="module" src="index.js"></script>
+</body>
+<script>
+  const data = [];
+  const res = JSON.parse(localStorage.getItem("SignUp"));
+  data.push(res);
+    const btn = document.querySelector(".login");
+    btn.addEventListener("click",(e)=>{
+        e.preventDefault();
+const Email = document.querySelector("#Email").value;
+const Password = document.querySelector("#Password").value;
+
+  
+  
+     data.forEach((val,idx)=>{
+       if(val.Email == Email && val.Password == Password){
+        console.log("login successfull")
+        window.location.href="todos.html";
+       }
+     })
+    })
+</script>
+</html>
