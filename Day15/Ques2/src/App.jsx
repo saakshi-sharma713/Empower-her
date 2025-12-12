@@ -5,15 +5,14 @@ import './App.css'
 import Navbar from './Components/Navbar'
 import Content from './Components/Content'
 import Footer from './Components/Footer'
+import MainPage from './Components/MainPage'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <Navbar/>
-      <Content/>
-      <Footer/>
+    <MainPage/>
     </>
   )
 }
