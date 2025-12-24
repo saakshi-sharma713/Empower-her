@@ -1,0 +1,21 @@
+.box{
+  display:grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-template-rows: repeat(3,1fr);
+  width:95%;
+  height:100vh;
+  margin:auto;
+  padding:15px;
+  gap:15px;
+  margin-top:90px;
+}
+body{
+   background-color: royalblue;
+    width:100%;
+}
+h1{
+  width:100vw;
+  margin:auto;
+  background:yellowgreen;
+  text-align: center;
+}
