@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { TodosContext } from "./Todos";
+import { TodosContext } from './Todos';
 
 const TodoItem = ({ todo }) => {
   const { deleteTodo } = useContext(TodosContext);

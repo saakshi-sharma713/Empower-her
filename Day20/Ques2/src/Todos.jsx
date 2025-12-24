@@ -2,11 +2,11 @@ import React from 'react'
 import { useState } from 'react';
 import { createContext } from 'react'
 export const TodosContext = createContext();
-const TodoContext = () => {
+const TodoContext = ({children}) => {
   const [todos,setTodo] = useState([]);
 
   function addTodo({title,id}){
-     setTodo([...todos,{title,id}])
+     setTodo((prev) => [...prev,{title,id}])
   }
 
   function deleteTodo(id){
@@ -16,10 +16,11 @@ const TodoContext = () => {
     }
   }))
   }
+
   return (
     <div>
-      <TodosContext.Provider value={{addTodo,deleteTodo}}>
-
+      <TodosContext.Provider value={{addTodo,deleteTodo,todos}}>
+{children}
       </TodosContext.Provider>
     </div>
   )
