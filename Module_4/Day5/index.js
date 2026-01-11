@@ -6,8 +6,9 @@ app.use(express.json());
 
 app.get("/students",(req,res)=>{
   const data = JSON.parse(fs.readFileSync("./db.json","utf-8"));
+  const students =  data.students
   console.log(data);
-  res.json(data.students)
+  res.json({message:"Data fetched",students})
 })
 
 app.post("/students",(req,res)=>{
@@ -18,7 +19,7 @@ app.post("/students",(req,res)=>{
     studentsData.push(newStudent);
     fs.writeFileSync("db.json",JSON.stringify(parsedData));
     console.log(parsedData);
-    res.json(parsedData);
+     res.json({message:"Data Added Successfully",students:studentsData});
 });
 
 app.put("/students/:id",(req,res)=>{
@@ -30,7 +31,7 @@ app.put("/students/:id",(req,res)=>{
       parsedData.students= updatedData;
    fs.writeFileSync("db.json",JSON.stringify(parsedData));
    console.log(parsedData);
-    res.json(parsedData);
+       res.json({message:"Data Updated Successfully",students:updatedData});
 })
 
 app.delete("/students/:id",(req,res)=>{
@@ -41,12 +42,12 @@ app.delete("/students/:id",(req,res)=>{
  
   
      if(filteredData.length == studentsData.length){
-        return res.json({message:"Data not defined"});
+        return res.json({message:"Student not found"});
      }
     parsedData.students= filteredData;
     fs.writeFileSync("db.json",JSON.stringify(parsedData));
     console.log(parsedData);
-    res.json(parsedData);
+    res.json({message:"Data deleted Successfully",students:filteredData});
 })
 app.listen(PORT,()=>{
     console.log("Server Started Successfully :)")
