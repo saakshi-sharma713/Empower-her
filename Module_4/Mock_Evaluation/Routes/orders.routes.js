@@ -46,7 +46,7 @@ _router.delete("/:id",(req,res)=>{
     const fetchedProduct = orders.find((data)=>(data.id == id));
 
     if(fetchedOrder && fetchedProduct){
-       if(fetchedOrder.status != "cancelled"  && fetchedOrder.date == Date(Date.now())){
+       if(fetchedOrder.status != "cancelled"  && fetchedOrder.createdAt == Date(Date.now())){
         fetchedOrder.status = "cancelled";
         fetchedProduct.stock = fetchedProduct.stock + fetchedOrder.quantity;
         return res.json({message:"Order cancelled"});
