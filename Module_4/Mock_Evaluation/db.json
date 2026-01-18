@@ -1,0 +1,36 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Mobile",
+            "price": 20000,
+            "stock": 9
+        }
+    ],
+    "orders": [
+        {
+            "id": 1,
+            "productId": 1,
+            "quantity": 3,
+            "totalAmount": 60000,
+            "status": "placed",
+            "createdAt": "2026-01-18"
+        },
+        {
+            "id": 2,
+            "productId": 1,
+            "quantity": 4,
+            "totalAmount": 80000,
+            "status": "placed",
+            "createdAt": "2026-01-18"
+        },
+        {
+            "id": 3,
+            "productId": 1,
+            "quantity": 5,
+            "totalAmount": 100000,
+            "status": "placed",
+            "createdAt": "2026-01-18"
+        }
+    ]
+}
