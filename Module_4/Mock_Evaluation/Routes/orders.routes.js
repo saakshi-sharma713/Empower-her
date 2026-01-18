@@ -17,7 +17,7 @@ _router.post("/",(req,res)=>{
      if(fetchedData.stock != 0 && fetchedData.stock > quantity){
      const id = orders[orders.length-1].id+1;
      const totalAmount = fetchedData.price * Number(quantity); 
-      orders.push({id,productId,quantity,totalAmount,status:"placed",createdAt: "2026-01-18"});
+      orders.push({id,productId,quantity,totalAmount,status:"placed",createdAt: Date(Date.now())});
       fetchedData.stock = fetchedData.stock - quantity;
       data.orders = orders;
       data.products = products;
@@ -42,11 +42,11 @@ _router.get("/",(req,res)=>{
 
 _router.delete("/:id",(req,res)=>{
     const {id} = req.params;
-    const fetchedOrder = orders.filter((data)=>(data.id == id));
-    const fetchedProduct = orders.filter((data)=>(data.id == id));
+    const fetchedOrder = orders.find((data)=>(data.id == id));
+    const fetchedProduct = orders.find((data)=>(data.id == id));
 
     if(fetchedOrder && fetchedProduct){
-       if(fetchedOrder.status != "cancelled"  && fetchedOrder.date == Date){
+       if(fetchedOrder.status != "cancelled"  && fetchedOrder.date == Date(Date.now())){
         fetchedOrder.status = "cancelled";
         fetchedProduct.stock = fetchedProduct.stock + fetchedOrder.quantity;
         return res.json({message:"Order cancelled"});
@@ -59,5 +59,24 @@ _router.delete("/:id",(req,res)=>{
     return res.status(404).json({message : "Product not Found"});
 
 })
+
+
+_router.patch("/change-status/:orderId",(req,res)=>{
+    const {orderId } = req.params;
+     const fetchedOrder = orders.find((data)=>{
+        
+        if(data.id == orderId ){
+            if(data.status != "Delivered" && data.status != "cancelled"){
+                 data.status ="shipped";
+            }
+        } 
+});
+           data.orders =orders
+            fs.writeFileSync("db.json",JSON.stringify(data));
+
+      return res.json({message :"Status Updated Successfully"})
+})
+
+
 
 module.exports = _router;
