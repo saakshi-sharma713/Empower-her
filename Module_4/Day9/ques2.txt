@@ -1,0 +1,41 @@
+--SCHEMA CREATED
+create table studentss(id	SERIAL Primary Key,
+name	TEXT,
+email	TEXT,
+age	INTEGER,
+course	TEXT,
+created_at	TIMESTAMP	)
+
+--DATA INSERTION
+INSERT INTO studentss (name, email, age, course, created_at) VALUES
+('Saakshi Sharma', 'saakshi@gmail.com', 20, 'BCA', NOW()),
+('Amit Sharma', 'amit@gmail.com', 21, 'BCA', NOW()),
+('Neha Verma', 'neha@gmail.com', 22, 'BSc', NOW()),
+('Rahul Singh', 'rahul@gmail.com', 23, 'BTech', NOW()),
+('Pooja Mehta', 'pooja@gmail.com', 19, 'BCA', NOW()),
+('Ankit Gupta', 'ankit@gmail.com', 24, 'MCA', NOW()),
+('Sneha Patel', 'sneha@gmail.com', 20, 'BCom', NOW()),
+('Rohit Kumar', 'rohit@gmail.com', 21, 'BCA', NOW()),
+('Kavya Joshi', 'kavya@gmail.com', 22, 'BA', NOW()),
+('Manish Yadav', 'manish@gmail.com', 25, 'MBA', NOW());
+
+--READ OPEARTION 
+SELECT * FROM STUDENTSS
+
+SELECT * FROM STUDENTSS WHERE AGE > 20
+
+SELECT  NAME,EMAIL FROM STUDENTSS
+
+SELECT * FROM STUDENTSS WHERE COURSE='BCA'
+
+--UPDATE operation
+update studentss set age=12 where name='Saakshi Sharma'
+
+UPDATE studentss
+SET course = 'BBA'
+WHERE course = 'Bcom';
+
+--DELETE OPERATION
+Delete from studentss where id ='3'
+
+Delete from studentss where age < 20
