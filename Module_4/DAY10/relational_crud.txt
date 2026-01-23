@@ -1,0 +1,59 @@
+create table users(id serial primary key,name text,email text, created_at timestamp)
+create table orders(id serial primary key,user_id int,amount NUMERIC(10,2),status TEXT, created_at timestamp,
+foreign key(user_id) references users(id) on delete cascade on update cascade)
+
+INSERT INTO users (name, email, created_at)
+VALUES
+('Saakshi Sharma', 'saakshi@gmail.com', NOW()),
+('Amit Sharma', 'amit@gmail.com', NOW()),
+('Neha Verma', 'neha@gmail.com', NOW()),
+('Rahul Singh', 'rahul@gmail.com', NOW()),
+('Priya Mehta', 'priya@gmail.com', NOW());
+
+
+INSERT INTO orders (user_id, amount, status, created_at)
+VALUES
+(1, 1200, 'Placed', NOW()),
+(2, 2500, 'Delivered', NOW()),
+(3, 1800, 'Shipped', NOW()),
+(4, 3200, 'Placed', NOW()),
+(5, 1500, 'Cancelled', NOW()),
+(1, 2200, 'Delivered', NOW()),
+(2, 900, 'Placed', NOW()),
+(3, 4100, 'Shipped', NOW()),
+(4, 2750, 'Delivered', NOW()),
+(5, 1300, 'Placed', NOW());
+
+
+select * from users
+select * from orders
+
+SELECT * FROM orders WHERE user_id = 1;
+
+SELECT  O.user_id, U.name, COUNT(*) AS total_orders FROM users U JOIN orders O ON O.user_id = U.id GROUP BY O.user_id, U.name HAVING COUNT(*) > 1;
+
+SELECT U.ID,U.NAME,SUM(AMOUNT) FROM USERS U JOIN ORDERS O ON O.user_id=U.id GROUP BY U.ID,U.NAME
+
+--UPDATE
+UPDATE USERS SET EMAIL='saakshi7466@gmail.com' WHERE ID=1
+
+UPDATE ORDERS SET STATUS='DELIVERED' WHERE ID=1
+
+UPDATE ORDERS SET AMOUNT=2000 WHERE ID=1
+
+
+--DELETE 
+DELETE FROM ORDERS WHERE ID=2
+
+DELETE FROM ORDERS WHERE USER_ID=2
+
+DELETE FROM USERS WHERE ID=4
+
+-- Why should orders not be stored inside the users table?
+
+Orders should not be stored inside the users table because a single user can place multiple orders. If orders are stored in the users table, we would need to 
+create multiple rows for the same user_id, which would lead to 
+data repetition. This repetition increases the table size, makes 
+the database complex to manage, and causes data redundancy. 
+Therefore, orders should be stored in a separate table and 
+linked to users using a foreign key.
