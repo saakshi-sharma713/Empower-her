@@ -1,0 +1,43 @@
+--SCHEMA CREATED
+create table studentss(id	SERIAL Primary Key,
+name	TEXT,
+email	TEXT,
+age	INTEGER,
+course	TEXT,
+created_at	TIMESTAMP	)
+
+--DATA INSERTION
+INSERT INTO studentss (name, email, age, course, created_at) VALUES
+('Saakshi Sharma', 'saakshi@gmail.com', 20, 'BCA', NOW()),
+('Amit Sharma', 'amit@gmail.com', 21, 'BCA', NOW()),
+('Neha Verma', 'neha@gmail.com', 22, 'BBA', NOW()),
+('Rahul Singh', 'rahul@gmail.com', 23, 'BTech', NOW()),
+('Pooja Mehta', 'pooja@gmail.com', 19, 'BBA', NOW()),
+('Ankit Gupta', 'ankit@gmail.com', 24, 'MCA', NOW()),
+('Sneha Patel', 'sneha@gmail.com', 20, 'BCom', NOW()),
+('Rohit Kumar', 'rohit@gmail.com', 21, 'BCA', NOW()),
+('Kavya Joshi', 'kavya@gmail.com', 22, 'Bcom', NOW()),
+('Manish Yadav', 'manish@gmail.com', 25, 'BBA', NOW());
+
+--READ OPEARTION 
+SELECT COUNT(*)  FROM STUDENTSS
+
+SELECT AVG(AGE) AS AVG_AGE FROM STUDENTSS
+
+SELECT MIN(AGE) AS MIN_AGE FROM STUDENTSS
+
+SELECT MAX(AGE) AS MAX_AGE FROM STUDENTSS
+
+SELECT COUNT(*)  FROM STUDENTSS WHERE AGE > 20;
+
+SELECT * FROM STUDENTSS
+
+--GROUPING AND FILTERING
+SELECT COURSE,COUNT(*)  FROM STUDENTSS GROUP BY COURSE
+SELECT COURSE FROM STUDENTSS GROUP BY COURSE HAVING COUNT(*) > 1
+SELECT COURSE,COUNT(*)  FROM STUDENTSS GROUP BY COURSE ORDER BY COUNT(*) DESC
+
+SELECT * FROM studentss ORDER BY created_at  LIMIT 5;
+
+SELECT * FROM studentss WHERE course = 'BCA' ORDER BY age DESC;
+
