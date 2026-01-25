@@ -31,3 +31,10 @@ export const getOrder = async(req,res)=>{
      console.log(data)
   return  res.json({orders:data})
 }
+
+export const deleteOrder = async(req,res)=>{
+    const {customerId} = req.params;
+     const {data,error} = await supabase.from('orders').delete().eq("customer_id",customerId);
+     console.log(data)
+  return  res.json({message:"Order Deleted"})
+}
